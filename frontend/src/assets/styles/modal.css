@@ -1,0 +1,54 @@
+.global-class-for-modal .MuiDialog-paper {
+  border-radius: 20px;
+}
+/* Dark Theme */
+[data-theme="dark"] .global-class-for-modal .MuiDialog-paper {
+  background-color: #414141;
+}
+[data-theme="dark"] .global-class-modal-title,
+[data-theme="dark"] .global-class-modal-content {
+  color: #ececec;
+}
+[data-theme="dark"] .global-class-for-modal .MuiInputBase-root {
+  color: #ffffff; /* Text color */
+}
+[data-theme="dark"] .global-class-for-modal .MuiInputLabel-root {
+  color: #bdbdbd; /* Label color */
+}
+[data-theme="dark"] .global-class-for-modal .MuiInput-underline:before {
+  border-bottom: 1px solid #777; /* Underline color */
+}
+[data-theme="dark"] .global-class-for-modal .MuiInput-underline:hover:before {
+  border-bottom: 2px solid #ffffff; /* Hover effect */
+}
+
+/* ----------------- */
+/* Light Theme */
+[data-theme="light"] .global-class-modal-title,
+[data-theme="light"] .global-class-modal-content {
+  color: #1d1d1d;
+}
+[data-theme="light"] .global-class-for-modal .MuiInput-underline:before {
+  border-bottom: 1px solid #ccc; /* Underline color */
+}
+[data-theme="light"] .global-class-for-modal .MuiInput-underline:hover:before {
+  border-bottom: 2px solid #1d1d1d; /* Hover effect */
+}
+
+/* ================ */
+.room-code-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #cccc;
+  border-radius: 7px;
+  padding: 8px 10px;
+  margin-top: 15px;
+}
+.copy-btn {
+  cursor: pointer;
+  padding: 5px 8px;
+  border-radius: 20px;
+  outline: none;
+  border: none;
+}
