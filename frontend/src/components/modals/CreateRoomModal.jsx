@@ -25,7 +25,7 @@ const CreateRoomModal = ({ open, onClose, roomCode = "esf-htjd-ukj" }) => {
   return (
     <Dialog open={open} onClose={onClose} className="global-class-for-modal">
       <DialogTitle className="global-class-modal-title">
-        Room Created
+        <b>Room Created</b>
       </DialogTitle>
       <DialogContent className="global-class-modal-content">
         <Typography>

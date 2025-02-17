@@ -1,3 +1,31 @@
 .room-container {
-  /* max-width: ; */
+  padding-top: 50px;
+  max-width: 90%;
+  margin: 0 auto;
+}
+[data-theme="dark"] .room-container {
+  color: white;
+}
+[data-theme="light"] .room-container {
+  color: #1d1d1d;
+}
+@media (max-width: 768px) {
+  .room-container {
+    width: 100%;
+  }
+}
+.media_player {
+  border: 1px solid #9b9b9b44;
+  border-radius: 8px;
+  height: 500px;
+}
+.user-screen-box {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.current-user-screen {
+  border-radius: 8px;
+  border: 1px solid #9b9b9b44;
+  height: 160px;
 }
