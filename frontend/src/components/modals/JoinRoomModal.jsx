@@ -14,16 +14,15 @@ import {
 import "../../assets/styles/modal.css";
 import { useSocket } from "../../context/Socket";
 import { useNavigate } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const validationSchema = Yup.object({
-  email: Yup.string()
-    .email("Invalid email format")
-    .required("Email is required"),
   roomId: Yup.string().required("Room ID is required"),
 });
 
 const JoinRoomModal = ({ open, onClose }) => {
   const { socket } = useSocket();
+  const { user } = useAuth0();
   const navigate = useNavigate();
 
   const handleModalClose = () => {
@@ -33,7 +32,6 @@ const JoinRoomModal = ({ open, onClose }) => {
 
   const formik = useFormik({
     initialValues: {
-      email: "",
       roomId: "",
     },
     validationSchema,
@@ -41,7 +39,7 @@ const JoinRoomModal = ({ open, onClose }) => {
       onClose();
       resetForm();
       socket.emit("join-room", {
-        emailId: values.email,
+        emailId: user.email,
         roomId: values.roomId,
       });
     },
@@ -60,6 +58,7 @@ const JoinRoomModal = ({ open, onClose }) => {
   return (
     <Dialog
       open={open}
+      maxWidth="md"
       onClose={handleModalClose}
       className="global-class-for-modal"
     >
@@ -72,21 +71,6 @@ const JoinRoomModal = ({ open, onClose }) => {
             Enter room code to join the call.
           </Typography>
           <Box mt={2}>
-            <TextField
-              required
-              margin="dense"
-              id="email"
-              name="email"
-              label="Email Address"
-              type="email"
-              fullWidth
-              variant="standard"
-              value={formik.values.email}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              error={formik.touched.email && Boolean(formik.errors.email)}
-              helperText={formik.touched.email && formik.errors.email}
-            />
             <TextField
               required
               margin="dense"

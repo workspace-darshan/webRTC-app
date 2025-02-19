@@ -1,6 +1,5 @@
 .room-container {
-  padding-top: 50px;
-  max-width: 90%;
+  padding: 50px 10px 0px 10px;
   margin: 0 auto;
 }
 [data-theme="dark"] .room-container {

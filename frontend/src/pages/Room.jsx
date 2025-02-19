@@ -7,7 +7,7 @@ const RoomPage = () => {
   const { socket } = useSocket();
   const { peer, createOffer } = usePeer();
 
-  const handleNewUserjoined = useCallback(
+  const handleNewUserJoined = useCallback(
     async (data) => {
       const { emailId } = data;
       console.log("New User joined", emailId);
@@ -18,20 +18,26 @@ const RoomPage = () => {
   );
 
   const handleIncomingCall = useCallback((data) => {
-    const { from, offer } = data;
-    console.log("incoming call", data);
+    console.log("📞 Incoming Call Event Received:", data);
   }, []);
 
   useEffect(() => {
-    if (!socket) return;
-    socket.on("user-joined", handleNewUserjoined);
+    console.log("🔗 Setting up socket listeners");
+
+    socket.on("user-joined", handleNewUserJoined);
     socket.on("incoming-call", handleIncomingCall);
 
+    console.log(
+      "🔍 Current listeners after adding:",
+      socket.listeners("incoming-call")
+    );
+
     return () => {
-      socket.off("user-joined", handleNewUserjoined);
+      console.log("❌ Removing socket listeners");
+      socket.off("user-joined", handleNewUserJoined);
       socket.off("incoming-call", handleIncomingCall);
     };
-  }, [handleNewUserjoined, socket, handleIncomingCall]);
+  }, [socket, handleNewUserJoined, handleIncomingCall]);
 
   return (
     <div className="room-container">

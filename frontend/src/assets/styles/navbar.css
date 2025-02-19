@@ -13,6 +13,79 @@
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.header-menu-btn {
+  background: none;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  font-size: 27px;
+}
+.header-profile {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  text-align: end;
+  gap: 0.5rem;
+}
+.header-profile h4,
+.header-profile p {
+  margin: 0;
+}
+.header-profile h4 {
+  font-size: 14px;
+}
+.header-profile p {
+  font-size: 13px;
+}
+[data-theme="light"] .header-profile p {
+  color: #555;
+}
+[data-theme="dark"] .header-profile p {
+  color: #777777;
+}
+.header-profile img {
+  height: 45px;
+  width: 45px;
+  border-radius: 50%;
+  background-color: black;
+}
+.header-logout {
+  background: none;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  font-size: 25px;
+}
+.theme-mode-btn {
+  background: none;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+}
+.header-logout {
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 440px) {
+  .logo {
+    height: 2.3em;
+    will-change: filter;
+    transition: logo-spin 300ms;
+    cursor: pointer;
+  }
+  .theme-mode-btn {
+    font-size: 26px !important;
+  }
+}
 
 @keyframes logo-spin {
   from {
@@ -28,9 +101,58 @@
     animation: logo-spin infinite 20s linear;
   }
 }
-.theme-mode-btn {
-  background: none;
-  outline: none;
-  border: none;
-  cursor: pointer;
+
+/* drawer */
+.header-drawer {
+  padding: 20px 10px;
+}
+.header-drawer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+/* Dark Theme */
+[data-theme="dark"] .header-drawer {
+  background-color: #414141;
+}
+.header-drawer-profile {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  /* text-align: end; */
+  gap: 0.5rem;
+}
+.header-drawer-profile h4,
+.header-drawer-profile p {
+  margin: 0;
+}
+.header-drawer-profile h4 {
+  font-size: 13px;
+}
+.header-drawer-profile p {
+  font-size: 12px;
+}
+[data-theme="light"] .header-drawer-profile h4 {
+  color: #555;
+}
+[data-theme="light"] .header-drawer-profile p {
+  color: #555;
+}
+[data-theme="dark"] .header-drawer-profile h4 {
+  color: #ffffff;
+}
+[data-theme="dark"] .header-drawer-profile p {
+  color: #b6b6b6;
+}
+.header-drawer-profile img {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background-color: black;
+}
+.header-drawer-action {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }

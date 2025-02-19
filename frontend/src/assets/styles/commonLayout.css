@@ -1,0 +1,14 @@
+.layout-container {
+  width: 100%;
+}
+.layout-middle-box {
+  min-height: 100dvh;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.common-content {
+  flex-grow: 1;
+}

@@ -4,6 +4,7 @@ import { FaKeyboard } from "react-icons/fa";
 import { IoVideocam } from "react-icons/io5";
 import JoinRoomModal from "../components/modals/JoinRoomModal";
 import CreateRoomModal from "../components/modals/CreateRoomModal";
+import Login from "./Login";
 
 const HomePage = () => {
   const [createRoomModal, setCreateRoomModal] = useState(false);

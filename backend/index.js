@@ -9,8 +9,11 @@ app.use(bodyParser.json());
 const server = http.createServer(app);
 const io = new Server(server, {
     cors: {
-        origin: "*",
+        origin: "http://localhost:5173",
+        methods: ["GET", "POST"], // ✅ Allow WebSocket upgrades
+        credentials: true // 
     },
+    allowEIO3: true,
 });
 
 const emailToSocketMapping = new Map();
@@ -33,13 +36,29 @@ io.on("connection", (socket) => {
         const { emailId, offer } = data;
         const fromEmail = socketToEmailMapping.get(socket.id)
         const socketId = emailToSocketMapping.get(emailId)
-        socket.to(socketId).emit("incoming-call", { from: fromEmail, offer })
-    }) 
+
+        console.log(`📞 Received call request from ${fromEmail} to ${emailId}`);
+        console.log(`✅ Emitting "incoming-call" to ${emailId} (${socketId})`);
+
+        if (socketId) {
+            socket.to(socketId).emit("incoming-call", { from: fromEmail, offer })
+        }
+    })
 
 
     socket.on("disconnect", () => {
         console.log("❌ A user disconnected:", socket.id);
+        const email = socketToEmailMapping.get(socket.id);
+        emailToSocketMapping.delete(email);
+        socketToEmailMapping.delete(socket.id);
     });
 });
 
-server.listen(8000, () => console.log("Server running on PORT 8000"));
+
+// node port
+const PORT = 8000;
+app.listen(PORT, () => console.log(`🚀 API Server running on PORT ${PORT}`));
+
+// socket port
+const SOCKET_PORT = 8001;
+server.listen(SOCKET_PORT, () => console.log(`📡 WebSocket Server running on PORT ${SOCKET_PORT}`));

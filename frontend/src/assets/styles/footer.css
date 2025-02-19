@@ -1,0 +1,30 @@
+.footer-container {
+  padding: 0 10px 10px 10px;
+}
+.footer {
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 13px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+/* Light Theme */
+[data-theme="light"] .footer {
+  background-color: #ececec;
+}
+/* Dark Theme */
+[data-theme="dark"] .footer {
+  background-color: #1e1e1e;
+}
+.footer-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.footer-logo-text h4 {
+  margin: 0;
+  font-size: 1.1em;
+  font-weight: 800;
+  text-transform: uppercase;
+}
